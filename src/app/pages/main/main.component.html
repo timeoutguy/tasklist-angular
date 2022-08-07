@@ -1,10 +1,11 @@
+<app-modal-add-task [events]="openModalEvent.asObservable()" [listArr]="listArr"></app-modal-add-task>
 <main class="bg-main-lighter">
-    <app-sidebar (listClickEvent)="handleTaskFilter($event)"></app-sidebar>
+    <app-sidebar [listArr]="listArr" (listClickEvent)="handleTaskFilter($event)"></app-sidebar>
     <article class="px-24 py-12 w-full">
-        <app-search-bar></app-search-bar>
+        <app-search-bar (taskSearchEvent)="handleSearchFilter($event)"></app-search-bar>
         <section class="flex justify-between items-center mb-7">
             <h2 class="text-3xl font-bold text-text"> Tasks </h2>
-            <button class="bg-secondary rounded-lg text-main-lighter px-9 py-3 text-2xl font-bold"> Adicionar task </button>
+            <button (click)="handleCreateTaskOpenModal()" class="bg-secondary rounded-lg text-main-lighter px-9 py-3 text-2xl font-bold"> Adicionar task </button>
         </section>
         <div>
             <app-task-card *ngFor="let task of filteredTaskArr" [task]="task"></app-task-card>

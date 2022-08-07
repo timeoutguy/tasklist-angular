@@ -8,6 +8,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TaskCardComponent } from './components/task-card/task-card.component';
 import { MainComponent } from './pages/main/main.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ModalAddTaskComponent } from './components/modal-add-task/modal-add-task.component';
 
 @NgModule({
   declarations: [
@@ -16,11 +18,13 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     TaskCardComponent,
     MainComponent,
     SearchBarComponent,
+    ModalAddTaskComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

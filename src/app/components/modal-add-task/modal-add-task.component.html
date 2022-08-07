@@ -1,0 +1,21 @@
+<div class="modal-container {{ isOpen ? 'active' : '' }}">
+  <div class="modal">
+    <p class="text-text text-2xl font-bold"> Adicionar nova task </p>
+    <form [formGroup]="taskFormGroup">
+      <fieldset class="flex flex-col pt-6">
+        <label for="task-title" class="text-text text-xl font-bold mb-2"> Titulo da task </label>
+        <input formControlName="taskTitleFormControl" type="text" id="task-title" name="task-title" class="bg-main-darker px-2 py-3 text-text rounded-lg" placeholder="...">
+      </fieldset>
+      <fieldset class="flex flex-col pt-6">
+        <label for="task-list" class="text-text text-xl font-bold mb-2"> Lista </label>
+        <select formControlName="taskListIdFormControl" name="task-list" id="task-list" class="bg-main-darker px-2 py-3 text-text rounded-lg">
+          <option *ngFor="let list of listArr" value="{{ list.id }}"> {{ list.title }}</option>
+        </select>
+      </fieldset>
+      <div class="flex justify-end mt-8">
+        <button (click)="handleFormSubmit()" class="bg-secondary px-4 py-4 rounded-lg text-white font-bold mr-4 hover:bg-secondary-700 duration-300"> Confirmar </button>
+        <button class="bg-red-500 px-4 py-4 rounded-lg text-white font-bold hover:bg-red-700 duration-300"> Cancelar </button>
+      </div>
+    </form>
+  </div>
+</div>

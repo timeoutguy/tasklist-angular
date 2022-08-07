@@ -1,4 +1,4 @@
-<div class="w-full bg-card h-44 py-6 px-7 rounded-2xl mb-5">
+<div class="w-full bg-card min-h-44 py-6 px-7 rounded-2xl mb-5">
     <p class="text-3xl font-bold text-text mb-7"> {{ task.title }} </p>
     <div class="flex justify-between items-center">
         <span class="rounded-lg text-base font-bold py-3 px-2 text-white" [ngClass]="task.isCompleted ? 'bg-blue-success' : 'bg-secondary' "> {{ task.isCompleted ? "Concluido" : "Em andamento" }} </span>

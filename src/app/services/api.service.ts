@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ListItem } from '../types/list-item';
+import { TaskCreate } from '../types/task-create';
 import { TaskItem } from '../types/task-item';
 
 @Injectable({
@@ -19,5 +20,13 @@ export class ApiService {
 
   getTask(): Observable<TaskItem[]> {
     return this.httpClient.get<TaskItem[]>(`${this.baseUrl}/tasks`)
+  }
+
+  createTask(task: TaskCreate): Observable<void> {
+    console.log(task);
+    return this.httpClient.post<void>(`${this.baseUrl}/tasks`, {
+      title: task.taskTitleFormControl,
+      listId: Number(task.taskListIdFormControl),
+    })
   }
 }
