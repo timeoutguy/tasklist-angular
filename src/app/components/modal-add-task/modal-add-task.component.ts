@@ -30,9 +30,9 @@ export class ModalAddTaskComponent implements OnInit {
   public handleFormSubmit() {
     this.apiService.createTask(this.taskFormGroup.value).subscribe(_ => {
       this.isOpen = false;
+      this.taskCreatedEvent.emit();
     });
 
-    this.taskCreatedEvent.emit();
   }
 
   public handleModalClose() {

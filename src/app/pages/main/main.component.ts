@@ -11,7 +11,8 @@ import { TaskItem } from 'src/app/types/task-item';
 })
 export class MainComponent implements OnInit {
 
-  openModalEvent: Subject<void> = new Subject<void>();
+  openCreateTaskModalEvent: Subject<void> = new Subject<void>();
+  openCreateListModalEvent: Subject<void> = new Subject<void>();
 
   public taskArr: Array<TaskItem> = [];
   public filteredTaskArr: Array<TaskItem> = [];
@@ -21,6 +22,11 @@ export class MainComponent implements OnInit {
   constructor(private apiService: ApiService) { }
 
   public handleTaskFilter(listId: number ){
+    let list = this.listArr.find(list => list.id == listId)
+    this.listArr.forEach(list => list.active = false);
+    if(list != undefined) {
+      list.active = true;
+    }
     this.filteredTaskArr = this.taskArr.filter(task => task.listId == listId);
   }
 
@@ -29,7 +35,11 @@ export class MainComponent implements OnInit {
   }
 
   public handleCreateTaskOpenModal() {
-    this.openModalEvent.next()
+    this.openCreateTaskModalEvent.next()
+  }
+
+  public handleCreateListOpenModal() {
+    this.openCreateListModalEvent.next();
   }
 
   public getTasks() {
@@ -40,7 +50,12 @@ export class MainComponent implements OnInit {
   }
 
   public getLists(){
-    this.apiService.getList().subscribe(response => this.listArr = response);
+    this.apiService.getList().subscribe(response => {
+      this.listArr = response;
+      this.listArr.forEach(list => {
+        list.active = false;
+      })
+    });
   }
 
   ngOnInit(): void {

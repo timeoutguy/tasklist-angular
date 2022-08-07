@@ -10,6 +10,7 @@ import { MainComponent } from './pages/main/main.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ModalAddTaskComponent } from './components/modal-add-task/modal-add-task.component';
+import { ModalAddListComponent } from './components/modal-add-list/modal-add-list.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ModalAddTaskComponent } from './components/modal-add-task/modal-add-tas
     MainComponent,
     SearchBarComponent,
     ModalAddTaskComponent,
+    ModalAddListComponent,
   ],
   imports: [
     BrowserModule,

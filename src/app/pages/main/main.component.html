@@ -1,6 +1,12 @@
-<app-modal-add-task (taskCreatedEvent)="getTasks()" [events]="openModalEvent.asObservable()" [listArr]="listArr"></app-modal-add-task>
+<app-modal-add-list (listCreatedEvent)="getLists()" [events]="openCreateListModalEvent.asObservable()"></app-modal-add-list>
+<app-modal-add-task (taskCreatedEvent)="getTasks()" [events]="openCreateTaskModalEvent.asObservable()" [listArr]="listArr"></app-modal-add-task>
 <main class="bg-main-lighter">
-    <app-sidebar [listArr]="listArr" (listClickEvent)="handleTaskFilter($event)"></app-sidebar>
+    <app-sidebar
+      [listArr]="listArr"
+      (listClickEvent)="handleTaskFilter($event)"
+      (addListButtonClickEvent)="handleCreateListOpenModal()"
+    >
+    </app-sidebar>
     <article class="px-24 py-12 w-full">
         <app-search-bar (taskSearchEvent)="handleSearchFilter($event)"></app-search-bar>
         <section class="flex justify-between items-center mb-7">

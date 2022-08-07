@@ -17,13 +17,11 @@ export class TaskCardComponent implements OnInit {
   constructor(private apiService: ApiService) { }
 
   public handleCardDelete(id: number) {
-    this.apiService.deleteTask(id).subscribe();
-    this.cardDeleteEvent.emit();
+    this.apiService.deleteTask(id).subscribe(_ => this.cardDeleteEvent.emit());
   }
 
   handleStatusChange(id: number, title: string, isCompleted: boolean) {
-    this.apiService.updateTask(id, title, !isCompleted).subscribe();
-    this.cardStatusChangeEvent.emit();
+    this.apiService.updateTask(id, title, !isCompleted).subscribe(_ => this.cardStatusChangeEvent.emit());
   }
 
   ngOnInit(): void {

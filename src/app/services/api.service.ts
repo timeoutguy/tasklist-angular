@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ListCreate } from '../types/list-create';
 import { ListItem } from '../types/list-item';
 import { TaskCreate } from '../types/task-create';
 import { TaskItem } from '../types/task-item';
@@ -16,6 +17,12 @@ export class ApiService {
 
   getList(): Observable<ListItem[]> {
     return this.httpClient.get<ListItem[]>(`${this.baseUrl}/lists`)
+  }
+
+  createList(list: ListCreate): Observable<void> {
+    return this.httpClient.post<void>(`${this.baseUrl}/lists`, {
+      title: list.listTitleFormControl,
+    })
   }
 
   getTask(): Observable<TaskItem[]> {

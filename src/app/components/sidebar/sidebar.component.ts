@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Subject } from 'rxjs';
 import { ListItem } from 'src/app/types/list-item';
 
 @Component({
@@ -8,6 +9,7 @@ import { ListItem } from 'src/app/types/list-item';
 })
 export class SidebarComponent implements OnInit {
 
+  @Output() addListButtonClickEvent = new EventEmitter();
   @Output() listClickEvent = new EventEmitter()
 
   @Input() listArr: Array<ListItem> = []
@@ -16,6 +18,10 @@ export class SidebarComponent implements OnInit {
 
   public handleClick(listId: number): void {
     this.listClickEvent.emit(listId);
+  }
+
+  public handleCreateListOpenModal() {
+    this.addListButtonClickEvent.emit()
   }
 
   ngOnInit(): void {

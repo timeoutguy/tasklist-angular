@@ -9,12 +9,13 @@
               *ngFor="let item of listArr"
               [attr.data-id]="item.id"
               (click)="handleClick(item.id)"
+              [ngClass]="{'active': item.active }"
             >
               {{ item.title }}
             </p>
         </div>
     </div>
-    <button class="bg-secondary py-5 text-main-darker w-full font-bold text-xl">
+    <button class="bg-secondary py-5 text-main-darker w-full font-bold text-xl" (click)="handleCreateListOpenModal()">
         Adicionar Lista +
     </button>
 </aside>
