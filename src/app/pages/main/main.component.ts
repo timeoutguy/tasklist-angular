@@ -45,7 +45,12 @@ export class MainComponent implements OnInit {
   public getTasks() {
     this.apiService.getTask().subscribe(response => {
       this.taskArr = response;
-      this.filteredTaskArr = response;
+      let haveListActive = this.listArr.find(list => list.active);
+      if(haveListActive) {
+        this.filteredTaskArr = this.taskArr.filter(task => task.listId == haveListActive?.id)
+      } else {
+        this.filteredTaskArr = response;
+      }
     });
   }
 

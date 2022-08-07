@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
 import { ListItem } from 'src/app/types/list-item';
@@ -16,8 +16,13 @@ export class ModalAddTaskComponent implements OnInit {
   public isOpen: boolean = false;
 
   public taskFormGroup: FormGroup = new FormGroup({
-    taskTitleFormControl: new FormControl<string>(''),
-    taskListIdFormControl: new FormControl<number|null>(null),
+    taskTitleFormControl: new FormControl<string>('', [
+      Validators.required,
+      Validators.minLength(3),
+    ]),
+    taskListIdFormControl: new FormControl<number|null>(1, [
+      Validators.required,
+    ]),
   })
 
   @Output() taskCreatedEvent = new EventEmitter();

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -19,7 +19,10 @@ export class ModalAddListComponent implements OnInit {
   @Input() events: Observable<void>
 
   public addListFromGroup: FormGroup = new FormGroup({
-    listTitleFormControl: new FormControl(''),
+    listTitleFormControl: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+    ]),
   })
 
   constructor(private apiService: ApiService) { }
@@ -29,7 +32,6 @@ export class ModalAddListComponent implements OnInit {
       this.handleModalClose();
       this.listCreatedEvent.emit();
     });
-
   }
 
   public handleModalClose() {

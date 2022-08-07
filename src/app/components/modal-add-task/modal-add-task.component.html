@@ -5,15 +5,18 @@
       <fieldset class="flex flex-col pt-6">
         <label for="task-title" class="text-text text-xl font-bold mb-2"> Titulo da task </label>
         <input formControlName="taskTitleFormControl" type="text" id="task-title" name="task-title" class="bg-main-darker px-2 py-3 text-text rounded-lg" placeholder="...">
+        <p class="text-red-500 mt-2" *ngIf="taskFormGroup.get('taskTitleFormControl')?.hasError('required')"> O titulo da task não pode ser vazio </p>
+        <p class="text-red-500 mt-2" *ngIf="taskFormGroup.get('taskTitleFormControl')?.hasError('minlength')"> O titulo da task deve conter no minimo 3 caracteres </p>
       </fieldset>
       <fieldset class="flex flex-col pt-6">
         <label for="task-list" class="text-text text-xl font-bold mb-2"> Lista </label>
         <select formControlName="taskListIdFormControl" name="task-list" id="task-list" class="bg-main-darker px-2 py-3 text-text rounded-lg">
           <option *ngFor="let list of listArr" value="{{ list.id }}"> {{ list.title }}</option>
         </select>
+        <p class="text-red-500 mt-2" *ngIf="taskFormGroup.get('taskListIdFormControl')?.hasError('required')"> A task deve pertencer a alguma lista </p>
       </fieldset>
       <div class="flex justify-end mt-8">
-        <button (click)="handleFormSubmit()" class="bg-secondary px-4 py-4 rounded-lg text-white font-bold mr-4 hover:bg-secondary-700 duration-300"> Confirmar </button>
+        <button (click)="handleFormSubmit()" [disabled]="!taskFormGroup.valid" class="bg-secondary px-4 py-4 rounded-lg text-white font-bold mr-4 hover:bg-secondary-700 duration-300 hover:bg-secondary-700 duration-300 disabled:opacity-50 disabled:hover:bg-secondary"> Confirmar </button>
         <button class="bg-red-500 px-4 py-4 rounded-lg text-white font-bold hover:bg-red-700 duration-300" (click)="handleModalClose()"> Cancelar </button>
       </div>
     </form>
