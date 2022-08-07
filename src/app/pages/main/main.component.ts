@@ -23,11 +23,17 @@ export class MainComponent implements OnInit {
 
   public handleTaskFilter(listId: number ){
     let list = this.listArr.find(list => list.id == listId)
-    this.listArr.forEach(list => list.active = false);
     if(list != undefined) {
-      list.active = true;
+      if(list.active) {
+        this.listArr.forEach(list => list.active = false);
+        list.active = false;
+        this.filteredTaskArr = this.taskArr;
+      } else {
+        this.listArr.forEach(list => list.active = false);
+        list.active = true;
+        this.filteredTaskArr = this.taskArr.filter(task => task.listId == listId);
+      }
     }
-    this.filteredTaskArr = this.taskArr.filter(task => task.listId == listId);
   }
 
   public handleSearchFilter(textFilter: string) {
