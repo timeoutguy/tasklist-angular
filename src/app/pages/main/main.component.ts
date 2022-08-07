@@ -32,12 +32,20 @@ export class MainComponent implements OnInit {
     this.openModalEvent.next()
   }
 
-  ngOnInit(): void {
+  public getTasks() {
     this.apiService.getTask().subscribe(response => {
       this.taskArr = response;
       this.filteredTaskArr = response;
     });
+  }
+
+  public getLists(){
     this.apiService.getList().subscribe(response => this.listArr = response);
+  }
+
+  ngOnInit(): void {
+    this.getTasks();
+    this.getLists();
   }
 
 }

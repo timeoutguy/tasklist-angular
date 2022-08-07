@@ -23,10 +23,13 @@ export class ApiService {
   }
 
   createTask(task: TaskCreate): Observable<void> {
-    console.log(task);
     return this.httpClient.post<void>(`${this.baseUrl}/tasks`, {
       title: task.taskTitleFormControl,
       listId: Number(task.taskListIdFormControl),
     })
+  }
+
+  deleteTask(id: number): Observable<void> {
+    return this.httpClient.delete<void>(`${this.baseUrl}/tasks/${id}`)
   }
 }

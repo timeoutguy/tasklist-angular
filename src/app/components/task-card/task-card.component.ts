@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ApiService } from 'src/app/services/api.service';
 import { TaskItem } from 'src/app/types/task-item';
 
 @Component({
@@ -8,9 +9,16 @@ import { TaskItem } from 'src/app/types/task-item';
 })
 export class TaskCardComponent implements OnInit {
 
+  @Output() cardDeleteEvent = new EventEmitter();
+
   @Input() task: TaskItem
 
-  constructor() { }
+  constructor(private apiService: ApiService) { }
+
+  public handleCardDelete(id: number) {
+    this.apiService.deleteTask(id).subscribe();
+    this.cardDeleteEvent.emit();
+  }
 
   ngOnInit(): void {
   }

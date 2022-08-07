@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
@@ -20,6 +20,8 @@ export class ModalAddTaskComponent implements OnInit {
     taskListIdFormControl: new FormControl<number|null>(null),
   })
 
+  @Output() taskCreatedEvent = new EventEmitter();
+
   @Input() events: Observable<void>;
   @Input() listArr: Array<ListItem> = []
 
@@ -29,6 +31,12 @@ export class ModalAddTaskComponent implements OnInit {
     this.apiService.createTask(this.taskFormGroup.value).subscribe(_ => {
       this.isOpen = false;
     });
+
+    this.taskCreatedEvent.emit();
+  }
+
+  public handleModalClose() {
+    this.isOpen = false;
   }
 
   ngOnInit(): void {

@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ApiService } from 'src/app/services/api.service';
 import { ListItem } from 'src/app/types/list-item';
 
 @Component({
