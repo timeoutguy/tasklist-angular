@@ -3,7 +3,7 @@
     <div class="flex justify-between items-center">
         <span class="rounded-lg text-base font-bold py-3 px-2 text-white" [ngClass]="task.isCompleted ? 'bg-blue-success' : 'bg-secondary' "> {{ task.isCompleted ? "Concluido" : "Em andamento" }} </span>
         <div class="flex items-center">
-            <span class="font-bold text-secondary text-base mr-5 duration-300 cursor-pointer hover:underline"> Marcar {{ task.isCompleted ? "em andamento" : "concluido" }} </span>
+            <span class="font-bold text-secondary text-base mr-5 duration-300 cursor-pointer hover:underline" (click)="handleStatusChange(task.id, task.title, task.isCompleted)"> Marcar {{ task.isCompleted ? "em andamento" : "concluido" }} </span>
             <span class="bg-red-500 rounded-md text-white material-icons p-2 cursor-pointer hover:bg-red-700 duration-300" (click)="handleCardDelete(task.id)">delete</span>
         </div>
     </div>

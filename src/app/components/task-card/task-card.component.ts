@@ -10,6 +10,7 @@ import { TaskItem } from 'src/app/types/task-item';
 export class TaskCardComponent implements OnInit {
 
   @Output() cardDeleteEvent = new EventEmitter();
+  @Output() cardStatusChangeEvent = new EventEmitter();
 
   @Input() task: TaskItem
 
@@ -18,6 +19,11 @@ export class TaskCardComponent implements OnInit {
   public handleCardDelete(id: number) {
     this.apiService.deleteTask(id).subscribe();
     this.cardDeleteEvent.emit();
+  }
+
+  handleStatusChange(id: number, title: string, isCompleted: boolean) {
+    this.apiService.updateTask(id, title, !isCompleted).subscribe();
+    this.cardStatusChangeEvent.emit();
   }
 
   ngOnInit(): void {

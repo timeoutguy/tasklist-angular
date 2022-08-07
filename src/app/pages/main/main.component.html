@@ -8,7 +8,7 @@
             <button (click)="handleCreateTaskOpenModal()" class="bg-secondary rounded-lg text-main-lighter px-9 py-3 text-2xl font-bold"> Adicionar task </button>
         </section>
         <div>
-            <app-task-card (cardDeleteEvent)="getTasks()" *ngFor="let task of filteredTaskArr" [task]="task"></app-task-card>
+            <app-task-card (cardDeleteEvent)="getTasks()" (cardStatusChangeEvent)="getTasks()" *ngFor="let task of filteredTaskArr" [task]="task"></app-task-card>
         </div>
     </article>
 </main>

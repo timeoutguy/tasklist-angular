@@ -32,4 +32,11 @@ export class ApiService {
   deleteTask(id: number): Observable<void> {
     return this.httpClient.delete<void>(`${this.baseUrl}/tasks/${id}`)
   }
+
+  updateTask(id: number, title: string, isCompleted: boolean): Observable<void> {
+    return this.httpClient.patch<void>(`${this.baseUrl}/tasks/${id}`, {
+      title,
+      isCompleted,
+    })
+  }
 }
