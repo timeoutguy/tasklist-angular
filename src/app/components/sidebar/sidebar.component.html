@@ -1,0 +1,13 @@
+<aside class="sidebar bg-main-darker">
+    <div>
+        <div class="px-24 pt-5 pb-2 border-b border-solid border-text">
+            <h1 class="text-5xl text-secondary font-bold"> Tasklist </h1>
+        </div>
+        <div class="text-text text-center pt-5" >
+            <p class="text-xl mb-4 hover:text-secondary hover:cursor-pointer hover:font-bold sidebar__list-item" *ngFor="let item of listArr" [attr.data-id]="item.id"> {{ item.title }} </p>
+        </div>
+    </div>
+    <button class="bg-secondary py-5 text-main-darker w-full font-bold text-xl">
+        Adicionar Lista +
+    </button>
+</aside>

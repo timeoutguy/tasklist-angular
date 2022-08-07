@@ -1,0 +1,16 @@
+.sidebar {
+    max-width: 360px;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    &__list-item {
+        &.active {
+            font-weight: bold;
+            color: #FF8906;
+        }
+    }
+}
