@@ -14,6 +14,7 @@ module.exports = {
       'secondary': '#FF8906',
       'card': '#353150',
       'white': '#FFFFFF',
+      'blue-success': '#195186',
       'red': colors.red,
     },
     extend: {},
