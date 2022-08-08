@@ -13,6 +13,7 @@ export class MainComponent implements OnInit {
 
   openCreateTaskModalEvent: Subject<void> = new Subject<void>();
   openCreateListModalEvent: Subject<void> = new Subject<void>();
+  openConfirmDeleteModalEvent: Subject<number> = new Subject<number>();
 
   public taskArr: Array<TaskItem> = [];
   public filteredTaskArr: Array<TaskItem> = [];
@@ -46,6 +47,10 @@ export class MainComponent implements OnInit {
 
   public handleCreateListOpenModal() {
     this.openCreateListModalEvent.next();
+  }
+
+  public handleDeleteConfirmOpenModal(id: number) {
+    this.openConfirmDeleteModalEvent.next(id);
   }
 
   public getTasks() {

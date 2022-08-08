@@ -17,7 +17,7 @@ export class TaskCardComponent implements OnInit {
   constructor(private apiService: ApiService) { }
 
   public handleCardDelete(id: number) {
-    this.apiService.deleteTask(id).subscribe(_ => this.cardDeleteEvent.emit());
+    this.cardDeleteEvent.emit(id);
   }
 
   handleStatusChange(id: number, title: string, isCompleted: boolean) {

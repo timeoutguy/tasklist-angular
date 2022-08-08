@@ -11,6 +11,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { ReactiveFormsModule } from '@angular/forms';
 import { ModalAddTaskComponent } from './components/modal-add-task/modal-add-task.component';
 import { ModalAddListComponent } from './components/modal-add-list/modal-add-list.component';
+import { ModalConfirmDeleteComponent } from './components/modal-confirm-delete/modal-confirm-delete.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ModalAddListComponent } from './components/modal-add-list/modal-add-lis
     SearchBarComponent,
     ModalAddTaskComponent,
     ModalAddListComponent,
+    ModalConfirmDeleteComponent,
   ],
   imports: [
     BrowserModule,

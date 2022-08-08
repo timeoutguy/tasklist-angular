@@ -1,3 +1,4 @@
+<app-modal-confirm-delete (taskDeleteConfirmationEvent)="getTasks()" [events]="openConfirmDeleteModalEvent.asObservable()" ></app-modal-confirm-delete>
 <app-modal-add-list (listCreatedEvent)="getLists()" [events]="openCreateListModalEvent.asObservable()"></app-modal-add-list>
 <app-modal-add-task (taskCreatedEvent)="getTasks()" [events]="openCreateTaskModalEvent.asObservable()" [listArr]="listArr"></app-modal-add-task>
 <main class="bg-main-lighter">
@@ -14,7 +15,7 @@
             <button (click)="handleCreateTaskOpenModal()" class="bg-secondary rounded-lg text-main-lighter px-9 py-3 text-2xl font-bold"> Adicionar task </button>
         </section>
         <div>
-            <app-task-card (cardDeleteEvent)="getTasks()" (cardStatusChangeEvent)="getTasks()" *ngFor="let task of filteredTaskArr" [task]="task"></app-task-card>
+            <app-task-card (cardDeleteEvent)="handleDeleteConfirmOpenModal($event)" (cardStatusChangeEvent)="getTasks()"  *ngFor="let task of filteredTaskArr" [task]="task"></app-task-card>
         </div>
     </article>
 </main>

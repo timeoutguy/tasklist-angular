@@ -1,0 +1,28 @@
+.modal-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($color: #000000, $alpha: .7);
+
+  display: none;
+
+  &.active {
+    display: block;
+  }
+
+  .modal {
+    max-width: 600px;
+    width: 100%;
+    background-color: #353150;
+    border-radius: 16px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    padding: 12px 24px 32px 24px;
+    flex-direction: column;
+  }
+}
